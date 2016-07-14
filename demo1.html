@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>load方法</title>
+</head>
+<body>
+<input type="button" class="load" value="Ajax异步加载load方法">
+<div class="resHtml"></div>
+<script src="script/jquery-1.11.3.min.js"></script>
+<script>
+    $(function () {
+        // load() 中使用get方法
+       /*$(".load").click(function() {
+           $(".resHtml").load("content.php?id=1");
+       });*/
+
+        // load() 中使用post方法
+        /*$(".load").click(function() {
+            $(".resHtml").load("content.php", {
+                id: 1
+            });
+        });*/
+
+        // load() 中的回调函数callback()
+        $(".load").click(function() {
+            $(".resHtml").load("content.php", {
+                id: 1
+            }, function (responseText, textStatus, XMLHttpRequest) {
+                console.log(XMLHttpRequest);
+            })
+        })
+    });
+</script>
+</body>
+</html>
