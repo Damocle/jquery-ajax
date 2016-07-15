@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$.post</title>
+</head>
+<body>
+<input type="button" class="clickMe" value="Ajax异步加载load方法">
+<div class="resHtml"></div>
+<script src="script/jquery-1.11.3.min.js"></script>
+<script>
+    // post方法传参方式
+    // 不能通过url进行传参
+
+    // 可以使用字符串形式的data数据进行传参
+    /*$(".clickMe").click(function() {
+        $.post("content.php", "id=1&hh=2", function(responseText, textStatus, XMLHttpRequest) {
+            $(".resHtml").html(responseText);
+        });
+    });*/
+
+
+    // 常用方法： 以对象形式进行传参
+    /*$(".clickMe").click(function() {
+        $.post("content.php", {
+            id: 1,
+            hh: 2
+        }, function(responseText, textStatus, XMLHttpRequest) {
+            $(".resHtml").html(responseText);
+        });
+    });*/
+
+    // $.post方法支持的---第四个参数：html、XML、json等
+    /*$(".clickMe").click(function() {
+        $.post("content.php", {
+            id: 1,
+            hh: 2
+        }, function(responseText, textStatus, XMLHttpRequest) {
+            $(".resHtml").html(responseText);
+        }, "html");   // html为默认可省略
+    });*/
+
+
+    // 默认为html，如果强制转换为html格式文本，会连带xml标签一起返回
+    /*$(".clickMe").click(function() {
+        $.post("test.xml", function(responseText, textStatus, XMLHttpRequest) {
+             console.log(responseText);
+        }, "html");
+    });*/
+
+    /*$(".clickMe").click(function() {
+        $.post("test.xml", function(responseText, textStatus, XMLHttpRequest) {
+            console.log($(responseText).find("root").find("url").text());
+        }, "xml");
+    });*/
+
+    // 默认为html，如果强制转换为html格式文本，会连带json标签一起返回
+    /*$(".clickMe").click(function() {
+        $.post("test.json", function(responseText, textStatus, XMLHttpRequest) {
+            console.log(responseText);
+        }, "html");
+    });*/
+
+    $(".clickMe").click(function() {
+        $.post("test.json", function(responseText, textStatus, XMLHttpRequest) {
+            console.log(responseText[0].url);
+        }, "");
+    });
+</script>
+</body>
+</html>

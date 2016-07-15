@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$.get()方法</title>
+</head>
+<body>
+<input type="button" class="clickMe" value="Ajax异步加载load方法">
+<div class="resHtml"></div>
+<script src="script/jquery-1.11.3.min.js"></script>
+<script>
+
+    // url后紧跟着传参
+    /*$(".clickMe").click(function() {
+        $.get("content.php?id=1", function(responseText, textStatus, XMLHttpRequest) {
+            $(".resHtml").html(responseText);
+        });
+    });*/
+
+    // 传入三个参数，第二个参数data以字符串形式传入
+    /*$(".clickMe").click(function() {
+        $.get("content.php", "id=1&hh=2", function(responseText, textStatus, XMLHttpRequest) {
+            $(".resHtml").html(responseText);
+        });
+    });*/
+
+    // 第三个参数以对象的形式传入
+    $(".clickMe").click(function() {
+        $.get("content.php", {
+            id: 1,
+            hh: 2
+        }, function(responseText, textStatus, XMLHttpRequest) {
+            $(".resHtml").html(responseText);
+        });
+    });
+</script>
+</body>
+</html>

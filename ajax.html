@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$.ajax()方法</title>
+</head>
+<body>
+<form class="form1">
+    用户名：<input type="text" name="username" />
+    邮箱：<input type="email" name="email" />
+    <input type="button" name="clickMe" class="clickMe" value="ClickMe" />
+</form>
+<div class="resHtml"></div>
+<script src="script/jquery-1.11.3.min.js"></script>
+<script>
+
+    $(function() {
+        // ajax 方法
+        /*$(".clickMe").click(function() {
+            // $.ajax()方法只有一个参数，传入一个对象，中间数据以键值对形式出现
+            $.ajax({
+                // 当type为post时：data数据可以是1、对象形式， 2、字符串形式，url中地址不可以加？
+                // 当type为get时: data数据可以是1、对象形式， 2、字符串形式, 3、可省略
+                type: "post",
+                url: "content.php",
+                data: {
+                    id: 1,
+                    hh: 2
+                },
+                success: function(responseText, textStatus, XMLHttpRequest) {
+                    $(".resHtml").html(responseText);
+                }
+            });
+         });*/
+
+        // 表单序列化
+        $(".clickMe").click(function() {
+            $.ajax({
+                type: "post",
+                url: "user.php",
+                // 表单序列化.serialize()
+                data: $("form.form1").serialize(),
+                success: function (responseText, textStatus, XMLHttpRequest) {
+                    $(".resHtml").html(responseText);
+                }
+            });
+
+            console.log($("form.form1").serialize());
+        });
+
+
+    });
+</script>
+</body>
+</html>

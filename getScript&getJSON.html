@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>$.getScript()&$.getJSON()方法</title>
+</head>
+<body>
+<input type="button" class="clickMe" value="Ajax异步加载load方法">
+<div class="resHtml"></div>
+<script src="script/jquery-1.11.3.min.js"></script>
+<script>
+    // 注意： $.getJSON()与$.getScript() 方法没有第四个参数，这两种方法直接规定了接受数据格式
+    // $.getJSON方法
+    /*$(".clickMe").click(function() {
+        $.getJSON("test.json", function(responseText, textStatus, XMLHttpRequest) {
+            console.log(responseText[0].url);
+        })
+    });*/
+
+    // $.getScript()
+    $(".clickMe").click(function() {
+        $.getScript("test.js");
+    })
+</script>
+</body>
+</html>
